@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 lections/
+
+homework/13/steam_reviews.csv
