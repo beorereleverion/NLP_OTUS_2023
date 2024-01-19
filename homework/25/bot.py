@@ -68,7 +68,8 @@ def get_sentence(text):
             sentence_2 = line[len("Предложение 2:"):].strip()[:150]
         elif line.startswith("Слово: "):
             word = line[len("Слово: "):].strip()
-
+    if sentence_1 == "" or sentence_2 == "" or word == "":
+        return ""
     return f"{sentence_1}. {sentence_2}. {word}"
 
 
@@ -76,6 +77,17 @@ def get_sentence(text):
 def log_message(message):
     print(message, end='\n')
     sentence=get_sentence(message.text)
+    if sentence=="":
+      bot.send_message(message.chat.id,"""Пожалуйста, соблюдайте формат(три строки с указанными префиксами, имейте ввиду что предложения должны быть не длиннее 150 символов и будут обрезаться):
+
+```yaml
+Слово: дорожка
+Предложение 1: Бурые ковровые дорожки заглушали шаги
+Предложение 2: Приятели решили выпить на дорожку в местном баре
+```
+""",
+                     parse_mode="Markdown")
+      return
     input,attention_mask=encode(sentence)
     result=inference(input,attention_mask)
     bot.send_message(message.chat.id, f'Я думаю {result}\n---\nДавай еще =)\n---')
