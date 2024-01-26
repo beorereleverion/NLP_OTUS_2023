@@ -56,7 +56,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -162,3 +161,5 @@ cython_debug/
 lections/
 
 homework/13/steam_reviews.csv
+
+homework/25/model_save*
