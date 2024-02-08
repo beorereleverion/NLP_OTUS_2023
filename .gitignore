@@ -163,3 +163,7 @@ lections/
 homework/13/steam_reviews.csv
 
 homework/25/model_save*
+
+project/data.jsonl
+project/config
+project/model_save
